@@ -6,3 +6,4 @@ Maps are tricky to work with in static visualisations, especially in a state lik
 I wanted to use scrollama and D3 to explore other ways to represent geographic data, in particular using the zoom and filtering functionality of D3.
 
 Index file is a modified version of the scrollama <a href="https://russellsamora.github.io/scrollama/sticky-side/">sticky side example</a>.
+The two geojson files are modified versions of the ABS's 2022 Australian LGAs shapefile, filtered to FERs and LGAs. The files have been simplified for page functionality purposes, as their original size (around 50MB) was too big for the page to comfortably load and manipulate the data.
