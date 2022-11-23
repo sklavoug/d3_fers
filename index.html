@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>FERs Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
+	<meta name="description" content="FERs Overview" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<style>
+        body {
+            font-family: "Public Sans";
+        }
+
+		#scrolly {
+			position: relative;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			padding: 1rem;
+		}
+		
+		article {
+			position: relative;
+			padding: 0;
+			max-width: 60rem;
+			margin: 0 auto;
+		}
+
+		figure {
+			position: -webkit-sticky;
+			position: sticky;
+			left: 0;
+			width: 70%;
+			margin: 0;
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			z-index: 0;
+		}
+
+		figure p {
+			text-align: center;
+			padding: 1rem;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-moz-transform: translate(-50%, -50%);
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			font-size: 8rem;
+			font-weight: 900;
+			color: #fff;
+		}
+
+		.step {
+			margin: 0 auto 2rem auto;
+			color: black;
+			z-index: 1;
+			
+		}
+
+		.step:last-child {
+			margin-bottom: 0;
+		}
+
+		.step p {
+			text-align: center;
+			padding: 1rem;
+			font-size: 1.5rem;
+			background-color: white;
+			z-index: 0;
+		}
+
+        h1 {
+            font-size: 60px;
+        }
+
+        .intro__dek {
+            display: block;
+            font-weight: 200
+        }
+
+        .intro__dek {
+            line-height: 1.5;
+            font-size: 40px;
+        }
+
+	</style>
+</head>
+
+<body>
+	<main>
+		
+
+		<section id="intro">
+			<h1 class="intro__hed">Functional Economic Regions in NSW</h1>
+			<p class="intro__dek">
+				A <a href="https://www.nsw.gov.au/sites/default/files/2021-02/20%20Year%20Vision%20for%20RNSW_0.pdf">2020 white paper</a> grouped NSW Local Government Areas (LGAs) into 'Functional Economic Regions'.
+			</p>
+            <p class="intro__dek">
+                These regions are based on area as well as key industries in particular areas.
+            </p>
+            <p class="intro__dek">
+                FERs were further grouped into 'types' of regions.
+            </p>
+            <p class="intro__dek"><br><br><br><br><br><br><br><br><br><br><br></p>
+		</section>
+
+		<section id="scrolly">
+			
+
+			<article>
+                <div class="step" data-step="0">
+                    <p>
+                    </p>
+                </div>
+				<div class="step" data-step="1">
+                    <p>There are six types of regions listed.</p>
+				</div>
+				<div class="step" data-step="2">
+					<p>The 'Metro' type includes all LGAs in Sydney as well as the Newcastle and Wollongong LGAs.</p>
+				</div>
+				<div class="step" data-step="3">
+					<p>The 'Metro Satellite' type includes LGAs surrounding Sydney, as well as the Queanbeyan and Tweed LGAs, neighbouring
+						the ACT and Byron/Gold Coast respectively.
+					</p>
+				</div>
+				<div class="step" data-step="4">
+					<p>The 'Coastal' type is the smallest by LGA count, comprising only five LGAs: Bega Valley, Clarence Valley, Eurobodalla,
+						Mid-Coast, and Nambucca.
+					</p>
+				</div>
+                <div class="step" data-step="5">
+					<p>The 'Growth Centre' type comprises a number of regional hubs, including Orange, Wagga Wagga, Dubbo, Albury, and Bathurst.</p>
+				</div>
+				<div class="step" data-step="6">
+					<p>The 'Inland' type incorporates a number of large areas including the Murray, Western Riverina, and Snowy Monaro areas.</p>
+				</div>
+				<div class="step" data-step="7">
+					<p>The 'Remote' type encompasses the far west of the state, including Broken Hill and the unincorporated area of western NSW.</p>
+				</div>
+				<div class="step" data-step="8">
+					<p>While these regions are useful, they still present challenges when viewing data geographically.</p>
+				</div>
+				<div class="step" data-step="9">
+					<p>Looking at the ABS's <a href="https://www.abs.gov.au/statistics/people/population/regional-population/latest-release#data-download">population estimate</a>, 
+						it's clear that Metro's headcount is so large that it overwhelms the rest of the state.</p>
+				</div>
+				<div class="step" data-step="10">
+					<p>Within Metro, however, the results are more skewed, with the largest proportion of the population in the Blacktown and Canterbury-Bankstown LGAs.</p>
+				</div>
+				<div class="step" data-step="11">
+					<p>Removing Metro from the calculation, too, makes it clear that the next-highest are the Growth Centre and Metro Satellite region types, with around 900K and 1.1M estimated population respectively.</p>
+				</div>
+			</article>
+
+			<figure>
+			</figure>
+		</section>
+
+		<section id="outro"></section>
+	</main>
+
+	<script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+	<script src="https://unpkg.com/scrollama"></script>
+	<script>
+		// using d3 for convenience
+		var main = d3.select("main");
+		var scrolly = main.select("#scrolly");
+		var figure = scrolly.select("figure");
+		var article = scrolly.select("article");
+		var step = article.selectAll(".step");
+
+		// initialize the scrollama
+		var scroller = scrollama();
+
+		// generic window resize listener event
+		function handleResize() {
+			// 1. update height of step elements
+			var stepH = Math.floor(window.innerHeight * 0.75);
+			step.style("height", stepH * 1.5 + "px");
+
+			var figureHeight = window.innerHeight / 2;
+			var figureMarginTop = (window.innerHeight - figureHeight) / 2;
+
+			figure
+				.style("height", figureHeight + "px")
+				.style("top", figureMarginTop + "px");
+
+			// 3. tell scrollama to update new element dimensions
+			scroller.resize();
+		}
+
+		// scrollama event handlers
+		function handleStepEnter(response) {
+
+			// add color to current step only
+			step.classed("is-active", function (d, i) {
+				return i === response.index;
+			});
+
+			var highlights = {2: 'Metro',
+							3: 'Metro Satellite',
+							4: 'Coastal',
+							5: 'Growth Centre',
+							6: 'Inland',
+							7: 'Remote'}
+
+			var zoom_levels = {2: [-1300, -900, 2.8],
+								3: [-800, -500, 2.0],
+								4: [-200, 0, 1.0],
+								5: [-200, 0, 1.0],
+								6: [0, 0, 1.0],
+								7: [300, 200, 1.0],
+								10: [-2700, -1600, 4.5]}
+
+			var zoom = d3.zoom().on("zoom", function() {
+				svg.attr("transform", d3.event.transform);
+			})
+
+			// Aggregated from LGA data
+			var headcounts = {'Metro': 5295259,
+							  'Metro Satellite': 1190453,
+							  'Remote': 56508,
+							  'Coastal': 247194,
+							  'Growth Centre': 983459,
+							  'Inland': 320942}
+
+			// Metro LGA headcounts, sourced from ABS
+			var headcounts_metro = {'Bayside (NSW)': 176061,
+									'Blacktown': 399711,
+									'Blue Mountains': 78360,
+									'Burwood': 40397,
+									'Camden': 119951,
+									'Campbelltown (NSW)': 177689,
+									'Canada Bay': 89667,
+									'Canterbury-Bankstown': 372322,
+									'Cumberland': 236996,
+									'Fairfield': 209030,
+									'Georges River': 152703,
+									'Hawkesbury': 67581,
+									'Hornsby': 152225,
+									'Hunters Hill': 13591,
+									'Inner West': 183772,
+									'Ku-ring-gai': 124659,
+									'Lane Cove': 39601,
+									'Liverpool': 234373,
+									'Mosman': 28461,
+									'Newcastle': 169317,
+									'North Sydney': 69460,
+									'Northern Beaches': 264481,
+									'Parramatta': 258315,
+									'Penrith': 219149,
+									'Randwick': 135275,
+									'Ryde': 129773,
+									'Strathfield': 45930,
+									'Sutherland': 230903,
+									'Sydney': 214851,
+									'The Hills': 192509,
+									'Waverley': 69388,
+									'Willoughby': 76034,
+									'Wollondilly': 54176,
+									'Wollongong': 214657,
+									'Woollahra': 53891
+									}
+
+			if (response.index < 2) {
+				d3.selectAll('.lgas').remove()
+				svg.selectAll("path")
+						.transition()
+						.duration(1000)
+						.attr('fill-opacity', 1)
+						.attr('stroke', 'white')
+						.attr("fill", function(d) {
+							var fer_type = {'Coastal': '#3d85c6',
+											'Growth Centre': '#6aa84f',
+											'Inland': '#f1c232',
+											'Metro': '#cd0000',
+											'Metro Satellite': '#a64d79',
+											'Remote': '#b45f06'}
+							return fer_type[d['properties']['Functional_Economic_Regions_Type']]
+                		})
+						.call(zoom.transform, d3.zoomIdentity.translate(0,0).scale(1.0))
+			} else if (response.index >= 2 && response.index < 8) {
+				d3.selectAll('.lgas').remove()
+
+				d3.selectAll("path")
+					.transition()
+					.duration(1000)
+					.attr('fill-opacity', function(d) {
+						if (d['properties']['Functional_Economic_Regions_Type'] === highlights[response.index]) {
+							return 1.0
+						} else {
+							return 0.2
+						}
+					})
+					.call(zoom.transform, d3.zoomIdentity.translate(zoom_levels[response.index][0],zoom_levels[response.index][1]).scale(zoom_levels[response.index][2]))
+
+				d3.json("NSW_LGA_2022.geojson", function(data){
+
+					var path = d3.geoPath().projection(d3.geoMercator()
+															.fitSize([width, height], data))
+
+					// Draw the map
+					svg.append("g")
+						.selectAll("path")
+						.data(data.features)
+						.enter()
+						.append("path")
+							.attr("fill", "white")
+							.attr("fill-opacity", 0)
+							.attr("opacity", function(d) {
+								if (d['properties']['Functional_Economic_Regions_Type'] === highlights[response.index]) {
+									return 1.0
+								} else {
+									return 0
+						}
+							})
+							.attr("d", path)
+							.attr("stroke", "white")
+							.attr("id", data.features[0]['properties']['LGA_NAME22'])
+							.classed("lgas", true)
+					
+				})
+			} else if (response.index === 8) {
+				d3.selectAll('.lgas').remove()
+				svg.selectAll("path")
+					.transition()
+					.duration(1000)
+					.attr('fill-opacity', 1)
+					.attr('stroke', 'white')
+					.attr('opacity', 1)
+					.attr("fill", function(d) {
+						var fer_type = {'Coastal': '#3d85c6',
+										'Growth Centre': '#6aa84f',
+										'Inland': '#f1c232',
+										'Metro': '#cd0000',
+										'Metro Satellite': '#a64d79',
+										'Remote': '#b45f06'}
+						return fer_type[d['properties']['Functional_Economic_Regions_Type']]
+					})
+					.call(zoom.transform, d3.zoomIdentity.translate(0,0).scale(1.0))
+			} else if (response.index === 9) {
+				d3.selectAll('.lgas').remove()
+				var colorScale = d3.scaleLinear()
+									.domain([50000,5000000])
+									.range(['white','blue'])
+				console.log([...Array(300000).keys()])
+				console.log(d3.schemeBlues)
+
+				svg.selectAll("path")
+					.transition()
+					.duration(2000)
+					.attr('fill', function(d) {
+						return colorScale(headcounts[d['properties']['Functional_Economic_Regions_Type']])
+					}).attr('stroke', 'black')
+					.attr('opacity', 1)
+					.call(zoom.transform, d3.zoomIdentity.translate(0,0).scale(1.0))
+				
+			} else if (response.index === 10) {
+				d3.selectAll("path")
+					.transition()
+					.duration(2000)
+					.attr('opacity', 0)
+					.call(zoom.transform, d3.zoomIdentity.translate(zoom_levels[response.index][0],zoom_levels[response.index][1]).scale(zoom_levels[response.index][2]))
+
+				d3.json("NSW_LGA_2022.geojson", function(data){
+
+					var path = d3.geoPath().projection(d3.geoMercator()
+															.fitSize([width, height], data))
+
+					var colorScale_lgas = d3.scaleLinear()
+											.domain([0,400000])
+											.range(['white','blue'])
+
+					// Draw the map
+					svg.append("g")
+						.selectAll("path")
+						.data(data.features)
+						.enter()
+						.append("path")
+							.attr("fill", "white")
+							.attr("fill-opacity", 0)
+							.attr("opacity", function(d) {
+								if (d['properties']['Functional_Economic_Regions_Type'] === highlights[2]) {
+									return 1.0
+								} else {
+									return 0
+							}
+							})
+							.attr("d", path)
+							.attr("stroke", "black")
+							.attr('stroke-width', 0.5)
+							.attr("id", data.features[0]['properties']['LGA_NAME22'])
+							.classed("lgas", true)
+					
+					
+					svg.selectAll('.lgas')
+							.transition()
+							.duration(1000)
+							.attr('fill-opacity', 1)
+							.attr('fill', function(d) {
+								console.log(d['properties']['LGA_NAME22'], headcounts_metro[d['properties']['LGA_NAME22']], colorScale_lgas(headcounts_metro[d['properties']['LGA_NAME22']]))
+								return colorScale_lgas(headcounts_metro[d['properties']['LGA_NAME22']])
+							})
+					
+				})
+			} else if (response.index === 11) {
+				// Zoom out, remove metro
+				d3.selectAll('.lgas').remove()
+				d3.selectAll("path")
+					.transition()
+					.duration(2000)
+					.attr('opacity', function(d) {
+						if (d['properties']['Functional_Economic_Regions_Type'] === 'Metro') {
+							return 0
+						} else {
+							return 1
+						}
+					})
+					.call(zoom.transform, d3.zoomIdentity.translate(0,0).scale(1))
+
+				var colorScale = d3.scaleLinear()
+								.domain([50000,1200000])
+								.range(['white','blue'])
+				console.log([...Array(300000).keys()])
+				console.log(d3.schemeBlues)
+
+				svg.selectAll("path")
+					.transition()
+					.duration(2000)
+					.attr('fill', function(d) {
+						return colorScale(headcounts[d['properties']['Functional_Economic_Regions_Type']])
+					}).attr('stroke', 'black')
+					.attr('opacity', function(d) {
+						if (d['properties']['Functional_Economic_Regions_Type'] === 'Metro') {
+							return 0
+						} else {
+							return 1
+						}
+					})
+					.call(zoom.transform, d3.zoomIdentity.translate(0,0).scale(1.0))
+		}}
+
+
+		function init() {
+
+			// 1. force a resize on load to ensure proper dimensions are sent to scrollama
+			handleResize();
+
+			// 2. setup the scroller passing options
+			// 		this will also initialize trigger observations
+			// 3. bind scrollama event handlers (this can be chained like below)
+			scroller
+				.setup({
+					step: "#scrolly article .step",
+					// Offset determines when in the scroll the action triggers
+					offset: 0.9,
+					debug: false
+				})
+				.onStepEnter(handleStepEnter);
+		}
+
+        // The Chart Part
+        var margin = {top: 10, right: 30, bottom: 20, left: 50},
+        width = 1400 - margin.left - margin.right,
+        height = 800 - margin.top - margin.bottom;
+
+        
+        var svg = d3.select("figure")
+                    .append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // Load external data and boot
+        d3.json("NSW_FER_TYPE_2022.geojson", function(data){
+
+            var path = d3.geoPath().projection(d3.geoMercator()
+                                                    .fitSize([width, height], data))
+            
+            console.log(data.features[0]['geometry']['coordinates'][0])
+            console.log(data.features[0])
+
+            // Draw the map
+            svg.append("g")
+                .selectAll("path")
+                .data(data.features)
+                .enter()
+                .append("path")
+                    .attr("fill", "#69a2a2")
+                    .attr("d", path)
+                    .attr("stroke", "white")
+                    .attr("id", data.features[0]['properties']['Functional_Economic_Regions_Type'])
+                
+        })
+
+		// kick things off
+		init();
+	</script>
+</body>
+
+</html>
